@@ -1,42 +1,47 @@
 import React, { Component } from "react";
+import axios from "axios";
 class Create extends Component {
   state = {
-    description: "",
-    responsible: "",
-    priority: "",
-    completed: false,
+    todo_description: "",
+    todo_responsible: "",
+    todo_priority: "",
+    todo_completed: false,
   };
 
   onChangeDescription = (e) => {
     this.setState({
-      description: e.target.value,
+      todo_description: e.target.value,
     });
   };
 
   onChangeResponsible = (e) => {
     this.setState({
-      responsible: e.target.value,
+      todo_responsible: e.target.value,
     });
   };
 
   onChangePriority = (e) => {
     this.setState({
-      priority: e.target.value,
+      todo_priority: e.target.value,
     });
   };
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.description);
-    console.log(this.state.responsible);
-    console.log(this.state.priority);
-    console.log(this.state.completed);
+    axios
+      .post("http://localhost:5000/add", this.state)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     this.setState({
-      description: "",
-      responsible: "",
-      priority: "",
-      completed: false,
+      todo_description: "",
+      todo_responsible: "",
+      todo_priority: "",
+      todo_complete: false,
     });
   };
 
@@ -49,6 +54,7 @@ class Create extends Component {
             <input
               type="text"
               className="form-control"
+              value={this.state.description}
               onChange={this.onChangeDescription}
             />
           </div>
@@ -56,6 +62,7 @@ class Create extends Component {
             <label>Responsiblity</label>
             <input
               type="text"
+              value={this.state.responsible}
               className="form-control"
               onChange={this.onChangeResponsible}
             />
@@ -92,7 +99,7 @@ class Create extends Component {
             <label className="form-check-label">High</label>
           </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            Create Todo
           </button>
         </form>
       </div>
