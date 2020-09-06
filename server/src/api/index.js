@@ -21,7 +21,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const item = await todo.find({
+    const item = await todo.findOne({
       _id: id,
     });
     if (!item) return next();

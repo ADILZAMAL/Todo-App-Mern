@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Todo = (props) => {
   return (
     <tr>
-      <td>{props.data.todo_description}</td>
-      <td>{props.data.todo_responsible}</td>
-      <td>{props.data.todo_priority}</td>
+      <td className={props.data.todo_completed ? "completed": ''}>{props.data.todo_description}</td>
+      <td className={props.data.todo_completed ? "completed": ''}>{props.data.todo_responsible}</td>
+      <td className={props.data.todo_completed ? "completed": ''}>{props.data.todo_priority}</td>
       <td>
         <Link to={"/edit/" + props.data._id}>Edit</Link>
       </td>

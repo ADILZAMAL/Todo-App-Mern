@@ -54,7 +54,7 @@ class Create extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.state.description}
+              value={this.state.todo_description}
               onChange={this.onChangeDescription}
             />
           </div>
@@ -62,7 +62,7 @@ class Create extends Component {
             <label>Responsiblity</label>
             <input
               type="text"
-              value={this.state.responsible}
+              value={this.state.todo_responsible}
               className="form-control"
               onChange={this.onChangeResponsible}
             />
@@ -74,7 +74,7 @@ class Create extends Component {
               className="form-check-input"
               value="Low"
               onChange={this.onChangePriority}
-              checked={this.state.priority === "Low"}
+              checked={this.state.todo_priority === "Low"}
             />
             <label className="form-check-label">Low</label>
           </div>
@@ -84,7 +84,7 @@ class Create extends Component {
               value="Medium"
               className="form-check-input"
               onChange={this.onChangePriority}
-              checked={this.state.priority === "Medium"}
+              checked={this.state.todo_priority === "Medium"}
             />
             <label className="form-check-label">Medium</label>
           </div>
@@ -94,7 +94,7 @@ class Create extends Component {
               value="High"
               onChange={this.onChangePriority}
               className="form-check-input"
-              checked={this.state.priority === "High"}
+              checked={this.state.todo_priority === "High"}
             />
             <label className="form-check-label">High</label>
           </div>
